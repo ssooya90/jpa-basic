@@ -68,16 +68,18 @@ public class JpaMain {
 			// persist를 할 필요가 없음
 			// 1차 캐시에 id, entity, 스냅샷이 있음. entity = 스냅샷을 비교하여 변경이 있는 경우 JPA가 알아서 update 쿼리를 만듬
 
-			Member member = em.find(Member.class, 150L);
-			member.setName("ZZZZ");
 
 
 
-			tx.commit();
+//			tx.commit();
 
 
 
+			Member member = new Member();
+			member.setUsername("최");
+			member.setRoleType(RoleType.USER);
 
+			em.persist(member);
 
 
 //			Member findMember = em.find(Member.class, 1L);
