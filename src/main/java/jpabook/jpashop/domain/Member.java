@@ -10,11 +10,15 @@ import javax.persistence.*;
 @Setter
 public class Member {
 
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id
+	@GeneratedValue
 	@Column(name = "MEMBER_ID")
 	private Long id;
-	private String name;
-	private String city;
-	private String street;
-	private String zipcode;
+
+	@ManyToOne // 멤버 입장에서는 many, 팀 입장에서는 one
+	@JoinColumn(name = "TEAM_ID")
+	private Team team;
+
+	private String username;
+
 }
