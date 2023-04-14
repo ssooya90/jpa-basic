@@ -4,8 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
@@ -16,14 +14,13 @@ public class Member {
 	@GeneratedValue
 	@Column(name = "MEMBER_ID")
 	private Long id;
-	private String name;
-	private String city;
-	private String street;
-	private String zipcode;
-
-	@OneToMany(mappedBy = "member")
-	private List<Order> orders = new ArrayList<>();
 
 	private String username;
+
+	private int age;
+
+	@ManyToOne
+	@JoinColumn(name = "TEAM_ID")
+	private Team team;
 
 }
